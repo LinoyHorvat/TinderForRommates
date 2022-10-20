@@ -17,7 +17,7 @@ const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
     res.status(200).send(users);
-  } catch (error) {
+  } catch (err) {
     res.status(400).send({ message: err.message });
   }
 };
@@ -30,7 +30,7 @@ const updateUser = async (req, res) => {
       $set: req.body,
     });
     res.status(200).send("user has been updated");
-  } catch (error) {
+  } catch (err) {
     res.status(400).send({ message: err.message });
   }
 };
@@ -47,8 +47,8 @@ const getMyFavoritesProfiles = async (req, res) => {
       }
     );
     return res.status(200).send(favoritesProfiles);
-  } catch (e) {
-    res.status(500).send({ error: e.message });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
   }
 };
 
@@ -68,7 +68,7 @@ const addToMyFavoritesProfiles = async (req, res) => {
       await user.save();
     }
     res.status(200).send(user);
-  } catch (error) {
+  } catch (err) {
     res.status(400).send({ message: err.message });
   }
 };
@@ -83,7 +83,7 @@ const deleteFromMyFavoritesProfiles = async (req, res) => {
     if (idx !== -1) user.myFavoritesProfiles.splice(idx, 1);
     await user.save();
     res.status(200).send(user);
-  } catch (error) {
+  } catch (err) {
     res.status(400).send({ message: err.message });
   }
 };
@@ -100,8 +100,8 @@ const getMyFavoritesApartments = async (req, res) => {
       }
     );
     return res.status(200).send(favoritesApartments);
-  } catch (e) {
-    res.status(500).send({ error: e.message });
+  } catch (err) {
+    res.status(500).send({ message: err.message });
   }
 };
 
@@ -119,7 +119,7 @@ const addToMyFavoritesApartments = async (req, res) => {
       await user.save();
     }
     res.status(200).send(user);
-  } catch (error) {
+  } catch (err) {
     res.status(400).send({ message: err.message });
   }
 };
@@ -135,7 +135,7 @@ const deleteFromMyFavoritesApartments = async (req, res) => {
     if (idx !== -1) user.myFavoritesApartments.splice(idx, 1);
     await user.save();
     res.status(200).send(user);
-  } catch (error) {
+  } catch (err) {
     res.status(400).send({ message: err.message });
   }
 };

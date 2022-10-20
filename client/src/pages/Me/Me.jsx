@@ -138,6 +138,8 @@ function Me() {
       </div>
       <h1>My Apartment</h1>
       <div>You haven't add an apartment...</div>
+
+      <button>Log Out</button>
     </div>
   );
 }

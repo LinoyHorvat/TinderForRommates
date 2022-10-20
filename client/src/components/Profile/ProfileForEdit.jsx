@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import myApi from "../../api/Api";
+import { useNavigate } from "react-router-dom";
 
+// TODO: placeholder for description
+// validation of update values like gender
 function ProfileForEdit({ user }) {
   const {
     name,
@@ -23,6 +26,7 @@ function ProfileForEdit({ user }) {
 
   const [currUser, setUser] = useState(user);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const getUser = async (_id) => {
     setLoading(true);
@@ -39,14 +43,20 @@ function ProfileForEdit({ user }) {
   }, []);
 
   const handleSubmit = async () => {
-    const { data } = await myApi.put(`/users/${user._id}`, {
-      profilePicture: imgURL,
-      age: newAge,
-      gender: newGender,
-      budget: newBudget,
-      phone: newPhone,
-      description: newDescription,
-    });
+    try {
+      const { data } = await myApi.put(`/users/${user._id}`, {
+        profilePicture: imgURL,
+        age: newAge,
+        gender: newGender,
+        budget: newBudget,
+        phone: newPhone,
+        description: newDescription,
+      });
+      navigate(0);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
     getUser(user._id);
   };
 
@@ -108,7 +118,7 @@ function ProfileForEdit({ user }) {
           <textarea
             cols="3vh"
             rows="9"
-            placeholder={description}
+            placeholder={description === "" ? "Enter description" : description}
             onChange={(e) => {
               setNewDescription(e.target.value);
             }}

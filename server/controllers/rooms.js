@@ -16,8 +16,8 @@ const getAllRooms = async (req, res) => {
   try {
     const rooms = await Room.find();
     res.status(200).send(rooms);
-  } catch (error) {
-    res.status(400).send({ message: error.message });
+  } catch (err) {
+    res.status(400).send({ message: err.message });
   }
 };
 
@@ -30,8 +30,8 @@ const updateRoom = async (req, res) => {
     });
     console.log(room);
     res.status(200).send({ message: "Room has been updated" });
-  } catch (error) {
-    res.status(400).send({ message: error.message });
+  } catch (err) {
+    res.status(400).send({ message: err.message });
   }
 };
 
