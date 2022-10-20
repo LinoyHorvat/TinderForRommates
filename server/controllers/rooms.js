@@ -7,7 +7,7 @@ const getRoom = async (req, res, next) => {
     const room = await Room.findById(id);
     res.status(200).send(room);
   } catch (err) {
-    res.status(400).send(err.message);
+    res.status(400).send({ message: err.message });
   }
 };
 
@@ -17,7 +17,7 @@ const getAllRooms = async (req, res) => {
     const rooms = await Room.find();
     res.status(200).send(rooms);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send({ message: error.message });
   }
 };
 
@@ -29,9 +29,9 @@ const updateRoom = async (req, res) => {
       $set: req.body,
     });
     console.log(room);
-    res.status(200).send("Room has been updated");
+    res.status(200).send({ message: "Room has been updated" });
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send({ message: error.message });
   }
 };
 
@@ -44,7 +44,7 @@ const addNewRoom = async (req, res) => {
     const room = new Room({ address, pictures, Description, phone, price });
     await room.save();
   } catch (err) {
-    res.status(400).send(err.message);
+    res.status(400).send({ message: err.message });
   }
 };
 

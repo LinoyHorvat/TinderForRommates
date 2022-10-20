@@ -3,7 +3,6 @@ import myApi from "../../api/Api";
 import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
-//TODO: add alerts/ errors to UI when adding incorrect data
 // TODO: fix redirect app
 
 function Authentication() {
@@ -20,7 +19,7 @@ function Authentication() {
       console.log("data", data);
     } catch (err) {
       console.log(err.response.data);
-      setErrorMessage(err.response.data);
+      setErrorMessage(err.response.data.message);
     }
     setRedirect(true);
   };
@@ -34,9 +33,9 @@ function Authentication() {
       data && localStorage.setItem("userInfo", JSON.stringify(data));
       console.log(data);
     } catch (err) {
-      console.log(err.response.data);
+      console.log(err);
+      console.log(err.response.data.message);
       setErrorMessage(err.response.data.message);
-      setErrorMessage(err.response.data);
     }
   };
   const userAlert = () => {

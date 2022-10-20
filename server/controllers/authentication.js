@@ -9,8 +9,14 @@ const minPasswordLength = 5;
 
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
-  // check password length
   try {
+    // check unfilled Field
+    if (name == "" || email == "" || password == "") {
+      return res
+        .status(400)
+        .send({ message: "Please Fill All Required Field" });
+    }
+    // check password length
     if (password.length < minPasswordLength) {
       return res.status(400).send({ message: "Password too short" });
     }
@@ -30,7 +36,7 @@ const registerUser = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     res.json({ user, token });
   } catch (err) {
-    res.status(400).send(err.message);
+    res.status(400).send({ message: err.message });
   }
 };
 
@@ -39,9 +45,9 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
-    !user && res.status(400).send("User not found");
+    !user && res.status(400).send({ message: "User not found" });
     const validPassword = await bcrypt.compare(password, user.password);
-    !validPassword && res.status(400).send("Invalid Credentials");
+    !validPassword && res.status(400).send({ message: "Invalid Credentials" });
 
     // creating out json web token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
@@ -58,7 +64,7 @@ const loginUser = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).send(err.message);
+    res.status(500).send({ message: err.message });
   }
 };
 

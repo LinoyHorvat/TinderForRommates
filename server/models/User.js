@@ -6,14 +6,19 @@ const UserSchema = new mongoose.Schema({
     type: "string",
     require: true,
     message: "Name is required",
+    validate: {
+      validator: (val) => {
+        return validator.isAlpha(val);
+      },
+    },
   },
   email: {
     type: String,
     required: true,
     unique: true,
     validate: {
-      validator: function (val) {
-        validator.isEmail(val);
+      validator: (val) => {
+        return validator.isEmail(val);
       },
     },
   },
@@ -30,7 +35,7 @@ const UserSchema = new mongoose.Schema({
   age: {
     type: Number,
     validator: function (val) {
-      validator.isAge(val);
+      return validator.isAge(val);
     },
   },
   gender: {
@@ -48,7 +53,11 @@ const UserSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    // TODO: add validator
+    validate: {
+      validator: (val) => {
+        return validator.isMobilePhone(val);
+      },
+    },
   },
   description: {
     type: String,

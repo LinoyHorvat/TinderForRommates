@@ -8,7 +8,7 @@ const getUser = async (req, res, next) => {
     const { password, ...reset } = user._doc;
     res.status(200).send(reset);
   } catch (err) {
-    res.status(400).send(err.message);
+    res.status(400).send({ message: err.message });
   }
 };
 
@@ -18,7 +18,7 @@ const getAllUsers = async (req, res) => {
     const users = await User.find();
     res.status(200).send(users);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send({ message: err.message });
   }
 };
 
@@ -31,7 +31,7 @@ const updateUser = async (req, res) => {
     });
     res.status(200).send("user has been updated");
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send({ message: err.message });
   }
 };
 
@@ -69,7 +69,7 @@ const addToMyFavoritesProfiles = async (req, res) => {
     }
     res.status(200).send(user);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send({ message: err.message });
   }
 };
 // delete user from myFavoritesProfiles
@@ -84,7 +84,7 @@ const deleteFromMyFavoritesProfiles = async (req, res) => {
     await user.save();
     res.status(200).send(user);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send({ message: err.message });
   }
 };
 
@@ -120,7 +120,7 @@ const addToMyFavoritesApartments = async (req, res) => {
     }
     res.status(200).send(user);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send({ message: err.message });
   }
 };
 // delete user from myFavoritesApartments
@@ -136,7 +136,7 @@ const deleteFromMyFavoritesApartments = async (req, res) => {
     await user.save();
     res.status(200).send(user);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send({ message: err.message });
   }
 };
 
