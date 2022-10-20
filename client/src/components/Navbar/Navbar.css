@@ -1,0 +1,19 @@
+.navbar-ul{
+  display: flex;
+  justify-content: space-around;
+  height: 70px;
+  background-color: rgb(159, 219, 240);
+  align-items: center;
+}
+.navbar-li{
+  /* text-shadow: -1px 0 rgb(16, 59, 203), 0 1px rgb(16, 59, 203), 1px 0 rgb(16, 59, 203), 0 -1px rgb(16, 59, 203); */
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  list-style: none;
+  cursor: pointer;
+  padding: 3px;
+}
+
+.navbar-li:hover{
+  border-bottom: 1px solid white;
+}

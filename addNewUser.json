@@ -1,0 +1,35 @@
+// add new user -post
+// http://localhost:8000/api/users/register
+{
+  "name": "Linoy",
+  "email": "linoy@gmail.com",
+  "password": "linoy123456"
+}
+// update user -put
+// http://localhost:8000/api/users/620e5180c3567c0a6980bf64/
+{
+  "name": "Mikey",
+  "email": "mikey@gmail.com",
+  "password": "mikey123456",
+  "age": "35",
+  "phone": "0537876545",
+"gender": "male",
+"budget": "10000",
+"description": "Hi I'm Hila from South Korea, currently doing a design internship in Copenhagen. I am a calm and relaxed person who can appreciate both alone time with privacy but also a good socialising like cooking / wine togather."
+}
+// add profile to favorite - put
+http://localhost:8000/api/users/favoritesProfiles/620e5180c3567c0a6980bf64/
+{
+  "_id": "620e3c2e2fe44ba2185c3854"
+}
+
+
+http://localhost:8000/api/rooms/62116a409370f625cfb40059
+put
+{
+  "address": "HaArba'a Street 28, TLV",
+  "price": "4000",
+  "pictures": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/317363739.jpg?k=4a62a1a5d5e843d4e757fd1a5ec528ebb5a07eb960d6e111ee9d376250b17d2a&o=&hp=1",
+  "phone":"050205000",
+  "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}

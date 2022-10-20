@@ -1,0 +1,35 @@
+*{
+  margin: 0;
+}
+.authenticationPage{
+  /* background-color:rgb(184, 229, 245); */
+  display: flex;
+  justify-content: space-around;
+  height: 100vh;
+  align-items: center;
+  color: white;
+  background-image: url(../../img/roommates-summer.png);
+  background-repeat: no-repeat, repeat;
+  background-position: top;
+  font-weight: bold;
+}
+
+.signIn, .buttonsDiv, .inputsDiv, .btn, .emailPassword {
+  margin: 5px;
+}
+.heder{
+  font-size:20px;
+}
+.signIn{
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  background-color:rgb(168, 231, 254);
+  height: 400px;
+  width: 200px;
+  /* background-color:black; */
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  /* padding: 70px; */
+}

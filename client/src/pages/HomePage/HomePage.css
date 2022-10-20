@@ -1,0 +1,17 @@
+.homePage{
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  background-image: url(../../img/roommates-summer.png);
+  background-repeat: no-repeat, repeat;
+  background-position: center;
+}
+.title{
+  font-size: 3vw;
+  margin: 20px;
+  padding:30px;
+  color: rgb(107, 200, 233);
+  /* text-shadow: -1px 0 rgb(16, 59, 203), 0 1px rgb(16, 59, 203), 1px 0 rgb(16, 59, 203), 0 -1px rgb(16, 59, 203); */
+  letter-spacing: 3px;
+  justify-self: center;
+}
