@@ -15,11 +15,16 @@ function Me() {
 
   const getUser = async (_id) => {
     setLoadingProfile(true);
-    const { data } = await myApi.get(`/users/${_id}`);
-    setCurrUser(data);
-    setLoadingProfile(false);
-    getAllFavoritesApartments(data);
-    getAllFavoritesProfiles(data);
+    try {
+      const { data } = await myApi.get(`/users/${_id}`);
+      setCurrUser(data);
+      setLoadingProfile(false);
+      getAllFavoritesApartments(data);
+      getAllFavoritesProfiles(data);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
 
   useEffect(() => {
@@ -42,7 +47,8 @@ function Me() {
           setLoadingProfile(true);
         }
       } catch (err) {
-        console.log(err);
+        console.log(err.response.data.message);
+        alert(err.response.data.message);
       }
     });
   };
@@ -65,11 +71,16 @@ function Me() {
   };
 
   const removeFromMyFavoritesProfiles = async (_id) => {
-    const { data } = await myApi.put(
-      `/users/deleteFavoritesProfiles/${currUser._id}`,
-      { _id }
-    );
-    getUser(currUser._id);
+    try {
+      const { data } = await myApi.put(
+        `/users/deleteFavoritesProfiles/${currUser._id}`,
+        { _id }
+      );
+      getUser(currUser._id);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
 
   const getAllFavoritesApartments = async (currUser) => {
@@ -86,7 +97,8 @@ function Me() {
           setLoadingRoom(true);
         }
       } catch (err) {
-        console.log(err);
+        console.log(err.response.data.message);
+        alert(err.response.data.message);
       }
     });
   };
@@ -109,11 +121,16 @@ function Me() {
   };
 
   const removeFromFavoritesApartments = async (_id) => {
-    const { data } = await myApi.put(
-      `/users/deleteFavoritesApartments/${currUser._id}`,
-      { _id }
-    );
-    getUser(currUser._id);
+    try {
+      const { data } = await myApi.put(
+        `/users/deleteFavoritesApartments/${currUser._id}`,
+        { _id }
+      );
+      getUser(currUser._id);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
   return (
     <div className="Me">

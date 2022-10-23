@@ -10,16 +10,26 @@ function Profiles() {
 
   const getAllUsers = async () => {
     setLoading(true);
-    const { data } = await myApi.get("/users/");
-    setUsersData(data);
-    setLoading(false);
+    try {
+      const { data } = await myApi.get("/users/");
+      setUsersData(data);
+      setLoading(false);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
 
   const getUser = async (_id) => {
     setLoading(true);
-    const { data } = await myApi.get(`/users/${_id}`);
-    setCurrUser(data);
-    setLoading(false);
+    try {
+      const { data } = await myApi.get(`/users/${_id}`);
+      setCurrUser(data);
+      setLoading(false);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
   useEffect(() => {
     getAllUsers();
@@ -50,10 +60,15 @@ function Profiles() {
   };
 
   const addProfileToMyFavoritesProfiles = async (_id) => {
-    const { data } = await myApi.put(
-      `/users/favoritesProfiles/${currUser._id}`,
-      { _id }
-    );
+    try {
+      const { data } = await myApi.put(
+        `/users/favoritesProfiles/${currUser._id}`,
+        { _id }
+      );
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
 
   return (

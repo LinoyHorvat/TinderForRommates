@@ -30,9 +30,14 @@ function ProfileForEdit({ user }) {
 
   const getUser = async (_id) => {
     setLoading(true);
-    const { data } = await myApi.get(`/users/${_id}`);
-    setUser(data);
-    setLoading(false);
+    try {
+      const { data } = await myApi.get(`/users/${_id}`);
+      setUser(data);
+      setLoading(false);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
 
   useEffect(() => {

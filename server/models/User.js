@@ -6,11 +6,12 @@ const UserSchema = new mongoose.Schema({
     type: "string",
     require: true,
     message: "Name is required",
-    validate: {
-      validator: (val) => {
-        return validator.isAlpha(val);
-      },
-    },
+    // TODO: validate name with space
+    // validate: {
+    //   validator: (val) => {
+    //     return validator.isAlpha(val);
+    //   },
+    // },
   },
   email: {
     type: String,
@@ -41,8 +42,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: (val) => {
-        // console.log(validator.equals(val, "male"));
-        // return validator.equals(val, "male");
         return validator.equals(val, "male") || validator.equals(val, "female");
       },
       message: (props) => `${props.value} is not a valid gender`,
@@ -58,7 +57,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: (val) => {
-        console.log(val);
         return validator.isMobilePhone(val);
       },
     },

@@ -15,8 +15,13 @@ function App() {
   const [user, setUser] = useState(null);
 
   const getUser = async (id) => {
-    const { data } = await myApi.get(`/users/${id}`);
-    setUser(data);
+    try {
+      const { data } = await myApi.get(`/users/${id}`);
+      setUser(data);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
 
   useEffect(() => {

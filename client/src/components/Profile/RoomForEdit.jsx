@@ -16,9 +16,14 @@ function RoomForEdit({ room }) {
 
   const getUser = async (_id) => {
     setLoading(true);
-    const { data } = await myApi.get(`/users/${_id}`);
-    setUser(data);
-    setLoading(false);
+    try {
+      const { data } = await myApi.get(`/users/${_id}`);
+      setUser(data);
+      setLoading(false);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
 
   useEffect(() => {
@@ -29,14 +34,19 @@ function RoomForEdit({ room }) {
   }, []);
 
   const handleSubmit = async () => {
-    const { data } = await myApi.put(`/rooms/${room._id}`, {
-      pictures: imgURL,
-      price: newPrice,
-      address: newAddress,
-      phone: newPhone,
-      description: newDescription,
-    });
-    getUser(currUser._id);
+    try {
+      const { data } = await myApi.put(`/rooms/${room._id}`, {
+        pictures: imgURL,
+        price: newPrice,
+        address: newAddress,
+        phone: newPhone,
+        description: newDescription,
+      });
+      getUser(currUser._id);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
 
   const showRoom = (room) => {

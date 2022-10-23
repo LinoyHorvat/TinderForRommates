@@ -10,16 +10,26 @@ function Apartments() {
 
   const getAllRooms = async () => {
     setLoading(true);
-    const { data } = await myApi.get("/rooms/");
-    setRoomData(data);
-    setLoading(false);
+    try {
+      const { data } = await myApi.get("/rooms/");
+      setRoomData(data);
+      setLoading(false);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
 
   const getUser = async (_id) => {
     setLoading(true);
-    const { data } = await myApi.get(`/users/${_id}`);
-    setCurrUser(data);
-    setLoading(false);
+    try {
+      const { data } = await myApi.get(`/users/${_id}`);
+      setCurrUser(data);
+      setLoading(false);
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
   useEffect(() => {
     getAllRooms();
@@ -48,10 +58,15 @@ function Apartments() {
   };
 
   const addRoomToMyFavorites = async (_id) => {
-    const { data } = await myApi.put(
-      `/users/favoritesApartments/${currUser._id}`,
-      { _id }
-    );
+    try {
+      const { data } = await myApi.put(
+        `/users/favoritesApartments/${currUser._id}`,
+        { _id }
+      );
+    } catch (err) {
+      console.log(err.response.data.message);
+      alert(err.response.data.message);
+    }
   };
 
   return (
