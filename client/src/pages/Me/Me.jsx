@@ -5,7 +5,6 @@ import ProfileForEdit from "../../components/Profile/ProfileForEdit";
 import RoomForEdit from "../../components/Profile/RoomForEdit";
 import myApi from "../../api/Api";
 import "../../components/Profile/Profile.css";
-import { useNavigate } from "react-router-dom";
 
 function Me() {
   const [favoritesProfiles, setFavoritesProfiles] = useState([]);
@@ -13,7 +12,6 @@ function Me() {
   const [loadingRoom, setLoadingRoom] = useState(false);
   const [currUser, setCurrUser] = useState(null);
   const [favoritesApartments, setFavoritesApartments] = useState([]);
-  const navigate = useNavigate();
 
   const getUser = async (_id) => {
     setLoadingProfile(true);
@@ -117,14 +115,6 @@ function Me() {
     );
     getUser(currUser._id);
   };
-  const logOutBtn = () => {
-    console.log("click");
-    setCurrUser(null);
-    localStorage.clear();
-    navigate("/");
-    navigate(0);
-  };
-
   return (
     <div className="Me">
       <h1>My Profile</h1>
@@ -147,12 +137,8 @@ function Me() {
       </div>
       <h1>My Apartment</h1>
       <div>You haven't add an apartment...</div>
-
-      <button onClick={() => logOutBtn()}>Log Out</button>
     </div>
   );
 }
 
 export default Me;
-
-// {loading && showFavoritesProfiles()}

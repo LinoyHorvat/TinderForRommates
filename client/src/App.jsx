@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="app">
       <Router>
-        {user && <Navbar user={user} />}
+        {user && <Navbar user={user} setUser={setUser} />}
         <Routes>
           <Route path="/" element={user ? <HomePage /> : <Authentication />} />
           <Route path="/apartments" element={<Apartments />} />
