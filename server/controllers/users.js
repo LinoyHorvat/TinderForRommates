@@ -26,8 +26,9 @@ const getAllUsers = async (req, res) => {
 const updateUser = async (req, res) => {
   const { id } = req.params;
   try {
-    const user = await User.findByIdAndUpdate(id, {
-      $set: req.body,
+    const user = await User.findByIdAndUpdate(id, req.body, {
+      new: true,
+      runValidators: true,
     });
     res.status(200).send("user has been updated");
   } catch (err) {

@@ -34,17 +34,18 @@ const UserSchema = new mongoose.Schema({
   },
   age: {
     type: Number,
-    validator: (val) => {
-      return validator.isAge(val);
-    },
+    min: 1,
+    max: 140,
   },
-  // TODO: need to fix gender validation
   gender: {
     type: String,
-    validator: (val) => {
-      console.log(validator.equals(val, "male"));
-      return validator.equals(val, "male");
-      // return validator.equals(val, "male") || validator.equals(val, "female");
+    validate: {
+      validator: (val) => {
+        // console.log(validator.equals(val, "male"));
+        // return validator.equals(val, "male");
+        return validator.equals(val, "male") || validator.equals(val, "female");
+      },
+      message: (props) => `${props.value} is not a valid gender`,
     },
   },
   budget: {
@@ -57,6 +58,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator: (val) => {
+        console.log(val);
         return validator.isMobilePhone(val);
       },
     },
