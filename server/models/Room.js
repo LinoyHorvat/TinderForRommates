@@ -8,9 +8,7 @@ const RoomSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    validate(value) {
-      if (value < 0) throw new Error("must be a positive integer");
-    },
+    min: 1,
   },
   // TODO: add pictures
   pictures: {
@@ -20,7 +18,11 @@ const RoomSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    // TODO: add validator
+    validate: {
+      validator: (val) => {
+        return validator.isMobilePhone(val);
+      },
+    },
   },
   Description: {
     type: String,

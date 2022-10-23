@@ -1,4 +1,6 @@
 // TODO: delete this
+// fix css responsive
+// do my apartment functionality
 // delete
 const validator = require("validator");
 const validation = (val) => {

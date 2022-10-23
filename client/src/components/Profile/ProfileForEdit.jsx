@@ -4,7 +4,7 @@ import myApi from "../../api/Api";
 import { useNavigate } from "react-router-dom";
 
 // TODO: placeholder for description
-// validation of update values like gender
+
 function ProfileForEdit({ user }) {
   const {
     name,
