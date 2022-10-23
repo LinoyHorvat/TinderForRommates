@@ -38,14 +38,13 @@ const UserSchema = new mongoose.Schema({
       return validator.isAge(val);
     },
   },
-  // need to fix gender validation
+  // TODO: need to fix gender validation
   gender: {
     type: String,
     validator: (val) => {
       console.log(validator.equals(val, "male"));
+      return validator.equals(val, "male");
       // return validator.equals(val, "male") || validator.equals(val, "female");
-      if (validator.equals(val, "male")) return true;
-      else return false;
     },
   },
   budget: {
