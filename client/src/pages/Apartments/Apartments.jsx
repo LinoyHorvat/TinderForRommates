@@ -7,6 +7,7 @@ function Apartments() {
   const [roomData, setRoomData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currUser, setCurrUser] = useState(null);
+  const [like, setLike] = useState(false);
 
   const getAllRooms = async () => {
     setLoading(true);
@@ -43,15 +44,15 @@ function Apartments() {
     return roomData.map((room) => {
       return (
         <div key={room._id} className="profile-box">
-          <Room room={room} />{" "}
+          <Room room={room} like={like} />
           <button
             className="profile-btn"
             onClick={() => {
               addRoomToMyFavorites(room._id);
             }}
           >
-            Like{" "}
-          </button>{" "}
+            Like
+          </button>
         </div>
       );
     });
@@ -63,6 +64,7 @@ function Apartments() {
         `/users/favoritesApartments/${currUser._id}`,
         { _id }
       );
+      setLike(true);
     } catch (err) {
       console.log(err.response.data.message);
       alert(err.response.data.message);
@@ -71,7 +73,7 @@ function Apartments() {
 
   return (
     <div className="profiles-page-container">
-      <h1> Find your Room </h1>{" "}
+      <h1> Find your Room </h1>
       <div className="profiles-container"> {roomData && showRooms()} </div>{" "}
     </div>
   );

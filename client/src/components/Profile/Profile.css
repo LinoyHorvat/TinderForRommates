@@ -1,23 +1,23 @@
-.profiles-page-container{
+.profiles-page-container {
   padding: 10px;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   /* align-items: center; */
 }
-.Me{
+.Me {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-h1{
+h1 {
   padding: 30px;
 }
 
-.profile-box{
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;  
+.profile-box {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
   /* height: 600px; */
   margin: 10px;
   padding: 10px;
@@ -29,7 +29,7 @@ h1{
   width: 400px;
 }
 .profile-box:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .profile-picture {
   align-self: center;
@@ -42,27 +42,32 @@ h1{
   padding: 3px;
   margin: 1px;
 }
-.profile-name{
+.profile-name {
   align-self: center;
   font-weight: bold;
   /* border-bottom: rgb(58, 198, 198) 1px solid; */
 }
 
-.profile-age, .profile-price{
+.profile-age,
+.profile-price {
   border-top: rgb(58, 198, 198) 1px solid;
   color: rgba(126, 120, 120, 0.851);
 }
-.profile-description{
+.profile-description {
   color: rgba(126, 120, 120, 0.851);
   font-style: italic;
 }
 
-.profiles-container{
+.profiles-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.profile-btn{
+.profile-btn {
   justify-self: end;
+}
+.heart-like {
+  align-self: flex-end;
+  /* display: none; */
 }
